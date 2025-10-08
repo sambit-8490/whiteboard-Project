@@ -1,0 +1,90 @@
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.tool-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tool-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tool-btn.active {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.color-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.color-display {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+}
+
+.color-picker-popup {
+  position: relative;
+}
+
+.color-picker-overlay {
+  position: fixed;
+  inset: 0;
+}
+
+.stroke-width-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.stroke-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.stroke-btn.active {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.stroke-preview {
+  border-radius: 9999px;
+}
+
+.opacity-slider {
+  width: 100%;
+}
+
+

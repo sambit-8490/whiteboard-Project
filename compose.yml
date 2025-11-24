@@ -1,41 +1,38 @@
 version: "3.8"
 
 services:
-  mongo:
-    image: mongo:6
-    container_name: whiteboard-mongo
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-
-  server:
-    build: ./server
-    container_name: whiteboard-server
-    restart: always
-    env_file:
-      - ./server/.env
-    ports:
-      - "5000:5000"
-    depends_on:
-      - mongo
-    environment:
-      - MONGODB_URI=mongodb://mongo:27017/collaborative-whiteboard
-      - CLIENT_URL=http://localhost:5173
-
   client:
     build: ./client
     container_name: whiteboard-client
-    restart: always
+    ports:
+      - "5173:80"
     env_file:
       - ./client/.env
     depends_on:
       - server
+
+  server:
+    build: ./server
+    container_name: whiteboard-server
     ports:
-      - "5173:80"
+      - "5000:5000"
+    env_file:
+      - ./server/.env
+    depends_on:
+      - mongo
+    restart: always
+
+  mongo:
+    image: mongo:6
+    container_name: mongo-db
+    restart: always
     environment:
-      - VITE_SOCKET_URL=http://server:5000
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
 
 volumes:
-  mongo_data:
+  mongo-data:
